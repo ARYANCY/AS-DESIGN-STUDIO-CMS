@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
 
 router.post('/subscribe', async (req, res) => {
-  const { email } = req.body;
+  const { name,email } = req.body;
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -25,14 +27,17 @@ router.post('/subscribe', async (req, res) => {
       }
     ]
   };
+ 
+
   try {
-    await transporter.sendMail(mailOptions);
-  } catch (err) {
-    console.error('Error sending email:', err);
-    const statusCode = err.statusCode || 500;
-    const message = err.message || 'error sending mail..please try again later';
-    res.status(statusCode).render('errorHandling/error', { statusCode, message });
-  }
+  await transporter.sendMail(mailOptions);
+  res.status(200).send('Email sent successfully'); // ✅ Required!
+ } catch (err) {
+  console.error('Error sending email:', err);
+  const statusCode = err.statusCode || 500;
+  const message = err.message || 'error sending mail..please try again later';
+  res.status(statusCode).render('errorHandling/error', { statusCode, message });
+ }
 });
 
 module.exports = router;

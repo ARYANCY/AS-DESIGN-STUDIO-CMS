@@ -12,6 +12,10 @@ const guest= require('./routes/guest');
 const subscribe = require('./routes/subscribe');
 
 const DB_URL= process.env.ATLAS_URL;
+const engine = require('ejs-mate');
+app.engine('ejs', engine); 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 const mongoose = require('mongoose');
 main()
@@ -28,6 +32,7 @@ async function main() {
 //middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(express.static(path.join(__dirname, 'public')));
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -66,12 +71,6 @@ app.post('/login', (req, res, next) => {
     return next(new ExpressError('Unauthorized Access', 401));
 
 });
-
-const engine = require('ejs-mate');
-app.engine('ejs', engine); 
-app.set('view engine', 'ejs');
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.set('views', path.join(__dirname, 'views'));
 
 const multer = require('multer');
 const storage = multer.diskStorage({
