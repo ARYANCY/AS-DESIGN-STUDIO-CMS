@@ -1,0 +1,32 @@
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="logo">AS DESIGN STUDIO</a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#Hero">Home</a></li>
+      <li><a href="#About">About</a></li>
+      <li><a href="#Project">Projects</a></li>
+      <li><a href="#Services">Services</a></li>
+      <li><a href="#Testimonials">Testimonials</a></li>
+      <li><a href="#Blog">Blog</a></li>
+      <li><a href="#Contact">Contact</a></li>
+      <li><a href="#FAQ">FAQS</a></li>
+      <li><a href="/">LOGOUT</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+    const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+</script>
+
+

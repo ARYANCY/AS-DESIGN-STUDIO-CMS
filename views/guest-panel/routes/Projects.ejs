@@ -1,0 +1,200 @@
+<style>
+  :root {
+    --bg1: #d9cfc4;
+    --bg2: #f4f0e7;
+    --bg3: #e7dfd5;
+    --bg4: #b4a997;
+    --bg5: #f8f5f1;
+
+    --headtext1: #4a463b;
+    --headtext2: #5b5142;
+    --headtext3: #8c9a7b;
+
+    --bodytext1: #7a7365;
+    --bodytext2: #9a8f80;
+
+    --accent1: #6d7458;
+
+    --button-bg: #6d7458;
+    --button-text: #fff;
+    --button-hover: #5e664b;
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --font-accent: 'Libre Baskerville', serif;
+  }
+
+  #Project {
+    padding: 4rem 1rem;
+    background: var(--bg3);
+    font-family: var(--font-body);
+    text-align: center;
+  }
+
+  .section-tag {
+    font-size: 1.1rem;
+    color: var(--headtext3);
+    font-family: var(--font-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-heading {
+    font-size: 3rem;
+    color: var(--headtext2);
+    font-family: var(--font-heading);
+    margin-bottom: 2rem;
+  }
+
+  .project-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    background: var(--bg5);
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: scale(1.01);
+  }
+
+  .image-wrapper {
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .project-title {
+    font-size: 2rem;
+    font-family: var(--font-heading);
+    color: var(--headtext1);
+    margin-bottom: 0.75rem;
+  }
+
+  .project-description {
+    font-size: 1.1rem;
+    color: var(--bodytext1);
+  }
+
+  #Project button {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 0.75rem 2rem;
+    margin-top: 3rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  #Project button:hover {
+    background: var(--button-hover);
+  }
+
+  #Project button a {
+    color: var(--button-text);
+    text-decoration: none;
+  }
+
+  /* Zoom Modal */
+  .zoom-modal {
+    display: none;
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .zoom-modal img {
+    display: block;
+    margin: 5% auto;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    animation: zoomIn 0.3s ease;
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .zoom-modal:active {
+    display: none;
+  }
+</style>
+<section id="Project" class="Project">
+  <p class="section-tag">Here is what I do</p>
+  <h2 class="project-heading">Projects</h2>
+
+  <% if (projectData && projectData.length > 0) { %>
+    <div class="project-grid">
+      <% projectData.forEach(p => { %>
+        <div class="project-card">
+          <div class="image-wrapper" onclick="zoomImage('<%= p.image.url %>')">
+            <img src="<%= p.image.url %>" alt="Project Image">
+          </div>
+          <h3 class="project-title"><%= p.title || 'Project Title' %></h3>
+          <p class="project-description"><%= p.description %></p>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>No projects found.</p>
+  <% } %>
+
+  <button><a href="/" class="read-more">HOME</a></button>
+
+  <div id="imageZoomModal" class="zoom-modal" onclick="closeZoom()">
+    <img id="zoomedImage" src="" alt="Zoomed Image">
+  </div>
+</section>
+<script>
+  function zoomImage(src) {
+    const modal = document.getElementById('imageZoomModal');
+    const zoomedImage = document.getElementById('zoomedImage');
+    zoomedImage.src = src;
+    modal.style.display = 'block';
+  }
+
+  function closeZoom() {
+    const modal = document.getElementById('imageZoomModal');
+    modal.style.display = 'none';
+  }
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeZoom();
+  });
+</script>

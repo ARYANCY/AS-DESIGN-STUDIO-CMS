@@ -1,0 +1,212 @@
+<style>
+  :root {
+    --bg1: #d9cfc4;
+    --bg2: #f4f0e7;
+    --bg3: #e7dfd5;
+    --bg4: #b4a997;
+    --bg5: #f8f5f1;
+
+    --headtext1: #4a463b;
+    --headtext2: #5b5142;
+    --headtext3: #8c9a7b;
+
+    --bodytext1: #7a7365;
+    --bodytext2: #9a8f80;
+
+    --accent1: #6d7458;
+
+    --button-bg: #6d7458;
+    --button-text: #fff;
+    --button-hover: #5e664b;
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --font-accent: 'Libre Baskerville', serif;
+  }
+
+  #Services {
+    padding: 4rem 1rem;
+    background: var(--bg2);
+    font-family: var(--font-body);
+    text-align: center;
+  }
+
+  #Services .section-tag {
+    font-size: 1.1rem;
+    color: var(--headtext3);
+    font-family: var(--font-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  #Services .services-heading {
+    font-size: 3rem;
+    color: var(--headtext2);
+    font-family: var(--font-heading);
+    margin-bottom: 2rem;
+  }
+
+  .services-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: var(--bg5);
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: scale(1.01);
+  }
+
+  .service-image-wrapper {
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+  }
+
+  .service-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .service-title {
+    font-size: 2rem;
+    font-family: var(--font-heading);
+    color: var(--headtext1);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-description {
+    font-size: 1.1rem;
+    color: var(--bodytext1);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-price {
+    font-size: 1rem;
+    color: var(--bodytext2);
+    margin-bottom: 1rem;
+  }
+
+  #Services button {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 0.75rem 2rem;
+    margin-top: 3rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  #Services button:hover {
+    background: var(--button-hover);
+  }
+
+  #Services button a {
+    color: var(--button-text);
+    text-decoration: none;
+  }
+
+  .zoom-modal {
+    display: none;
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .zoom-modal img {
+    display: block;
+    margin: 5% auto;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    animation: zoomIn 0.3s ease;
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .zoom-modal:active {
+    display: none;
+  }
+</style>
+
+<section id="Services">
+  <p class="section-tag">What I offer</p>
+  <h2 class="services-heading">Services</h2>
+
+  <% if (serviceData && serviceData.length > 0) { %>
+    <div class="services-grid">
+      <% serviceData.forEach(s => { %>
+        <div class="service-card">
+          <div class="service-image-wrapper" onclick="zoomImage('<%= s.serviceImage.url %>')">
+            <img src="<%= s.serviceImage.url %>" alt="Service Image">
+          </div>
+          <h3 class="service-title"><%= s.title %></h3>
+          <p class="service-description"><%= s.description %></p>
+          <p class="service-price">Pricing: <%= s.pricing %></p>
+          <form action="/services/<%= s.id %>" method="get">
+            <button type="submit">VIEW DETAILS</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>No services available.</p>
+  <% } %>
+
+  <button><a href="/">HOME</a></button>
+
+  <div id="imageZoomModal" class="zoom-modal" onclick="closeZoom()">
+    <img id="zoomedImage" src="" alt="Zoomed Image">
+  </div>
+</section>
+
+<script>
+  function zoomImage(src) {
+    const modal = document.getElementById('imageZoomModal');
+    const zoomedImage = document.getElementById('zoomedImage');
+    zoomedImage.src = src;
+    modal.style.display = 'block';
+  }
+
+  function closeZoom() {
+    const modal = document.getElementById('imageZoomModal');
+    modal.style.display = 'none';
+  }
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeZoom();
+  });
+</script>

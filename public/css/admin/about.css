@@ -1,0 +1,224 @@
+:root {
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.15);
+  --shadow-deep: rgba(0, 0, 0, 0.2);
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --btn-color: var(--button1-bg);
+  --bg1: #d9cfc4;
+  --bg2: #f4f0e7;
+  --bg3: #e7dfd5;
+  --bg4: #b4a997;
+  --bg5: #f8f5f1;
+  --headtext1: #4a463b;
+  --headtext2: #5b5142;
+  --headtext3: #8c9a7b;
+  --bodytext1: #7a7365;
+  --bodytext2: #9a8f80;
+  --bodytext3: #e8e2d8;
+  --bodytext4: #f2ede6;
+  --accent1: #6d7458;
+  --accent2: #8c9a7b;
+  --button1-bg: #6d7458;
+  --button1-text: #ffffff;
+  --button1-hover: #5e664b;
+  --border-color: #bdbb9a;
+  --shadow-color: rgba(26, 26, 18, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.12);
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --shadow-deep: rgba(0, 0, 0, 0.15);
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Libre Baskerville', serif;
+  --bg-gradient-start: #f9f7f4;
+  --bg-gradient-end: #efeae2;
+}
+
+#About {
+  background: var(--bg4);
+  padding: 5rem 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  transition: background 0.4s ease;
+}
+
+#About h2 {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  color: var(--bg2);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#About > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  background: var(--bg3);
+  padding: 2.5rem 3.5rem;
+  box-shadow: 0 12px 30px var(--shadow-color);
+  border-radius: 1.25rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#About > div:hover {
+  transform: scale(1.03);
+  box-shadow: 0 16px 40px var(--shadow-hover);
+}
+
+#About img {
+  width: 250px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 16px var(--shadow-deep);
+}
+
+#About h3 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--bodytext1);
+}
+
+#About p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--bodytext1);
+  max-width: 600px;
+}
+
+#About form {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  #About {
+    padding: 3rem 1.5rem;
+    align-items: stretch;
+    text-align: center;
+  }
+  #About h2 {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+  }
+  #About > div {
+    flex-direction: column;
+    padding: 1.5rem 1.2rem;
+    gap: 1.5rem;
+  }
+  #About img {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  #About h3 {
+    font-size: 1.6rem;
+  }
+  #About p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+  #About button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+}
+
+.section-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--btn-color);
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 0;
+  font-family: var(--font-body, 'Poppins', sans-serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--shadow-color);
+  transition: all 0.25s ease-in-out;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.section-button:hover {
+  background-color: var(--btn-hover);
+  border-color: var(--btn-color);
+  box-shadow: 0 7px 10px var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.section-button:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+@media (max-width: 480px) {
+  #About {
+    padding: 1rem;
+    text-align: center;
+  }
+  #About h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  #About div {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0.75rem;
+    border-radius: 10px;
+    background: var(--accent-bg);
+    box-shadow: 0 0 5px var(--shadow-light);
+  }
+  #About img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+  #About h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  #About p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  #About .section-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  #About h2 {
+    font-size: 1.1rem;
+  }
+  #About div {
+    padding: 0.5rem;
+  }
+  #About img {
+    max-width: 150px;
+  }
+  #About h3 {
+    font-size: 0.95rem;
+  }
+  #About p {
+    font-size: 0.8rem;
+  }
+  #About .section-button {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+}

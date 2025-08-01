@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/css/admin/form.css">
+<section id="edit-service">
+  <h2>Edit Service</h2>
+  <form action="/admin/services/<%= service._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <label for="title">Title:</label>
+    <input type="text" name="title" value="<%= service.title %>" required />
+
+    <label for="description">Description:</label>
+    <textarea name="description" rows="4" required><%= service.description %></textarea>
+
+    <label for="pricing">Price:</label>
+    <input type="text" name="pricing" value="<%= service.pricing %>" required />
+
+    <label for="serviceImage">Replace Image:</label>
+    <input type="file" name="serviceImage" accept="image/*" />
+
+    <button type="submit">Update Service</button>
+  </form>
+</section>

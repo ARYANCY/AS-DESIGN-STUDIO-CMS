@@ -1,0 +1,173 @@
+<style>
+  :root {
+    --bg1: #d9cfc4;
+    --bg2: #f4f0e7;
+    --bg3: #e7dfd5;
+    --bg4: #b4a997;
+    --bg5: #f8f5f1;
+
+    --headtext1: #4a463b;
+    --headtext2: #5b5142;
+    --headtext3: #8c9a7b;
+
+    --bodytext1: #7a7365;
+    --bodytext2: #9a8f80;
+    --bodytext3: #e8e2d8;
+    --bodytext4: #f2ede6;
+
+    --accent1: #6d7458;
+    --accent2: #8c9a7b;
+
+    --button1-bg: #6d7458;
+    --button1-text: #ffffff;
+    --button1-hover: #5e664b;
+
+    --btn-color: hotpink;
+    --btn-hover: deeppink;
+
+    --border-color: #bdbb9a;
+    --box-shadow: rgba(26, 26, 18, 0.1);
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(0, 0, 0, 0.12);
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --font-accent: 'Libre Baskerville', serif;
+  }
+
+  #Services {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2.5rem 2rem;
+    font-family: var(--font-body);
+    background: var(--bg5);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    border-radius: 1rem;
+    text-align: center;
+  }
+
+  #Services h2 {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--headtext2);
+    margin-bottom: 2rem;
+  }
+
+  #Services .service-card {
+    background: #fff;
+    padding: 1.8rem;
+    border-radius: 1rem;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: transform 0.2s ease;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  #Services .service-card:hover {
+    transform: translateY(-4px);
+  }
+
+  #Services p {
+    color: var(--bodytext1);
+    font-size: 1rem;
+    margin: 0.75rem 0;
+  }
+
+  #Services p strong {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--headtext1);
+    margin-bottom: 0.75rem;
+    font-family: var(--font-heading);
+  }
+
+  #Services img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  #Services form {
+    display: inline-block;
+    margin: 0.5rem 0.75rem;
+  }
+
+  #Services button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    background: var(--btn-color);
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 3px 8px var(--shadow-light);
+  }
+
+  #Services button:hover {
+    background: var(--btn-hover);
+  }
+
+  @media (max-width: 768px) {
+    #Services {
+      padding: 2rem 1.5rem;
+    }
+
+    #Services h2 {
+      font-size: 2.1rem;
+    }
+
+    #Services p {
+      font-size: 0.95rem;
+    }
+
+    #Services p strong {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #Services h2 {
+      font-size: 1.8rem;
+    }
+
+    #Services p {
+      font-size: 0.9rem;
+    }
+
+    #Services p strong {
+      font-size: 1.25rem;
+    }
+
+    #Services button {
+      font-size: 0.9rem;
+      padding: 0.6rem 1.2rem;
+    }
+  }
+</style>
+
+<section id="Services">
+  <h2>Service Details</h2>
+
+  <% if (serviceData) { %>
+    <div class="service-card">
+      <p><strong><%= serviceData.title %></strong></p>
+      <p><%= serviceData.description %></p>
+      <p>Pricing: <%= serviceData.pricing %></p>
+      <img src="<%= serviceData.serviceImage.url %>" alt="service Image" />
+    </div>
+
+    <form action="/services" method="get">
+      <button type="submit">BACK TO SERVICES</button>
+    </form>
+    <form action="/" method="get">
+      <button type="submit">HOME</button>
+    </form>
+  <% } else { %>
+    <p>Service not found.</p>
+  <% } %>
+</section>

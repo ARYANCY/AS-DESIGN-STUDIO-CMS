@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="/css/admin/form.css">
+<section id="edit-project">
+  <h2>Edit Project</h2>
+  <form action="/admin/projects/<%= project.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="file" name="image" id="image">
+      <p class="current-image">Current: <%= project.image %></p>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" value="<%= project.title %>" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea name="description" id="description" required><%= project.description %></textarea>
+    </div>
+
+    <button type="submit">Update Project</button>
+  </form>
+</section>

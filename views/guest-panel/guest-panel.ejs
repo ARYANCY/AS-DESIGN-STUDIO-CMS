@@ -1,0 +1,155 @@
+<% layout('guest-panel/layouts/guest-panel-boilerplate') %>
+
+<section id="Hero" class="Hero">
+  <% if (heroData && heroData.length > 0) { %>
+    <% heroData.forEach(h => { %>
+      <div class="hero-card">
+        
+          <img class="hero-image" src="<%= h.image.url%>"/>
+          <p class="business-name"><strong><%= h.businessName %></strong> </p>
+          <p class="tagline"><strong><%= h.tagLine %></strong> </p>
+          <p class="intro"><strong><%= h.shortIntro %></strong> </p>
+    
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No hero data available.</p>
+  <% } %>
+</section>
+
+<section id="About" class="About"> 
+  <h2>About</h2>
+  <% if (aboutData) { %>
+    <div>
+      <img src="<%= aboutData.image.url %>" alt="About Image" width="200">
+      <h3><%= aboutData.title %></h3>
+      <p><%= aboutData.description %></p>
+    </div>
+  <% } else { %>
+    <p>No about data available.</p>
+  <% } %>
+</section>
+
+<section id="Services" class="services-section">
+  <p class="section-tag">What we offer</p>
+  <h2 class="services-heading">Our Services</h2>
+
+  <% if (serviceData && serviceData.length > 0) { %>
+    <div class="services-grid">
+      <% serviceData.slice(0, 4).forEach(s => { %>
+        <div class="service-card">
+          <div class="image-wrapper">
+            <img src="<%= s.serviceImage.url %>" alt="Service Image">
+          </div>
+          <div class="service-info">
+            <h3 class="service-title"><%= s.title %></h3>
+            <p class="service-desc"><%= s.description %></p>
+            <p class="service-price">Pricing: <%= s.pricing %></p>
+            <a href="/services/<%= s.id %>" class="read">Read More</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>No services available.</p>
+  <% } %>
+</section>
+
+
+<section id="Project" class="Project">
+  <p class="section-tag">Here is what I do</p>
+  <h2 class="project-heading">Projects</h2>
+
+  <% if (projectData && projectData.length > 0) { %>
+    <div class="project-grid">
+      <% projectData.slice(0, 4).forEach(p => { %>
+        <div class="project-card">
+          <div class="image-wrapper">
+            <img src="<%= p.image.url %>" alt="Project Image">
+          </div>
+          <h3 class="project-title"><%= p.title || 'Project Title' %></h3>
+          <p class="project-description"><%= p.description %></p>
+          <a href="/projects/<%= p.id %>" class="read-more">READ MORE</a>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>No projects available.</p>
+  <% } %>
+</section>
+
+<section id="Testimonials" class="Testimonials">
+  <h2 class="Testimonials-header">Testimonials</h2>
+  <% if (testimonialData && testimonialData.length > 0) { %>
+    <% testimonialData.forEach(t => { %>
+      <div class="Testimonials-container">
+        <p>"<%= t.review %>" - <%= t.name %> (Rating: <%= t.ratings %>/5)</p>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No testimonials available.</p>
+  <% } %>
+</section>
+
+<section id="Contact" class="Contact">
+  <h2 class="contact-heading">Contact Info</h2>
+  <div class="contact-container" >
+    <% if (contactData && contactData.length > 0) { %>
+      <% contactData.forEach(c => { %>
+        <div class="contact-card" >
+          <p ><strong><%= c.type %>:</strong> <%= c.value %></p>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No contact data available.</p>
+    <% } %>
+  </div>
+</section>
+
+<section id="Blog" class="Blog">
+  <h2>Blog Posts</h2>
+  <% if (blogData && blogData.length > 0) { %>
+    <% blogData.forEach(b => { %>
+      <div>
+        <p><strong><%= b.title %></strong></p>
+        <p><%= b.content.substring(0, 100) %>...</p> <!-- Snippet from content -->
+        <p><small><%= new Date(b.date).toDateString() %></small></p>
+        <form action="/Blog/<%= b.id  %>" method="get">
+        <button type="submit">DETAIL</button>
+      </form>
+      </div>
+      
+    <% }) %>
+  <% } else { %>
+    <p>No blog posts available.</p>
+  <% } %>
+</section>
+
+<section id="FAQ" class="FAQ">
+  <h2 class="faq-heading">FAQs</h2>
+  <% for (let i = 0; i < faqData.length; i++) { %>
+    <div class="faq-item">
+      <div class="faq-header">
+        <span class="faq-question">Q: <%= faqData[i].question %></span>
+        <span class="faq-toggle-icon" id="toggle-icon-<%= i %>">+</span>
+      </div>
+      <div class="faq-answer" id="answer-<%= i %>">
+        A: <%= faqData[i].answer %>
+      </div>
+    </div>
+  <% } %>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+      const header = item.querySelector(".faq-header");
+
+      header.addEventListener("click", () => {
+        item.classList.toggle("open");
+      });
+    });
+  });
+</script>

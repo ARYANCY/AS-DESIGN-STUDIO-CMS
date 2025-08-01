@@ -1,0 +1,208 @@
+:root {
+  --bg1: #d9cfc4;
+  --bg2: #f4f0e7;
+  --bg3: #e7dfd5;
+  --bg4: #b4a997;
+  --bg5: #f8f5f1;
+
+  --headtext1: #4a463b;
+  --headtext2: #5b5142;
+  --headtext3: #8c9a7b;
+
+  --bodytext1: #7a7365;
+  --bodytext2: #9a8f80;
+  --bodytext3: #e8e2d8;
+  --bodytext4: #f2ede6;
+
+  --accent1: #6d7458;
+  --accent2: #8c9a7b;
+
+  --button1-bg: #6d7458;
+  --button1-text: #ffffff;
+  --button1-hover: #5e664b;
+
+  --border-color: #bdbb9a;
+  --box-shadow: rgba(26, 26, 18, 0.1);
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Libre Baskerville', serif;
+}
+
+/* === Navbar === */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  font-family: var(--font-heading);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* === Container === */
+.navbar .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* === Logo === */
+.navbar .logo {
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #222;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.navbar .logo:hover {
+  color: var(--accent1);
+}
+
+/* === Nav Links === */
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.navbar .nav-links li a {
+  color: #222;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.navbar .nav-links li a:hover,
+.navbar .nav-links li a:focus {
+  background: var(--accent1);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(109, 116, 88, 0.4);
+  outline: none;
+}
+
+/* === Hamburger Button === */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:focus {
+  outline: 2px solid var(--accent1);
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: #333;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar .container {
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .navbar .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    transition: max-height 0.3s ease;
+  }
+
+  .navbar .nav-links.show {
+    display: flex;
+  }
+
+  .navbar .nav-links li {
+    width: 100%;
+  }
+
+  .navbar .nav-links li a {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 0;
+  }
+
+  .navbar .nav-links li a:hover {
+    background-color: var(--accent2);
+    color: white;
+  }
+}
+@media (max-width: 480px) {
+  .navbar {
+    width: 100vw;
+  }
+
+  .navbar .container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .navbar .nav-links li a {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+  }
+}
+
+
+@media (max-width: 360px) {
+  .navbar {
+    width: 100vw;
+  }
+
+  .navbar .container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .navbar .nav-links li a {
+    list-style: none;
+    font-size: 0.75rem;
+    padding: 0.6rem;
+  }
+}

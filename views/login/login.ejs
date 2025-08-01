@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Login</title></head>
+<style>
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f7f7f7, #e0e0e0);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  background-color: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 360px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-color: #607274;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  background-color: #607274;
+  color: #fff;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #4d5e5e;
+}
+
+</style>
+<body>
+  <form action="/login" method="POST">
+    <label>Username: <input type="text" name="username" /></label><br />
+    <label>Password: <input type="password" name="password" /></label><br />
+    <button type="submit">Login</button>
+  </form>
+</body>
+</html>

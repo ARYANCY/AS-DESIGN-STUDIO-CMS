@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/css/admin/form.css">
+
+<section id="edit-about">
+  <h2>Edit About Section</h2>
+  <form action="/admin/about/<%= about._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <label for="title">Title:</label>
+    <input type="text" name="title" value="<%= about.title %>" required />
+
+    <label for="description">Description:</label>
+    <textarea name="description" rows="5" required><%= about.description %></textarea>
+
+    <label for="aboutImage">Replace Image:</label>
+    <input type="file" name="aboutImage" accept="image/*" />
+
+    <button type="submit">Update About</button>
+  </form>
+</section>

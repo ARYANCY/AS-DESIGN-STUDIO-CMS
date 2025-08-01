@@ -1,0 +1,194 @@
+:root {
+  --bg1: #d9cfc4;
+  --bg2: #f4f0e7;
+  --bg3: #e7dfd5;
+  --bg4: #b4a997;
+  --bg5: #f8f5f1;
+
+  --headtext1: #4a463b;
+  --headtext2: #5b5142;
+  --headtext3: #8c9a7b;
+
+  --bodytext1: #7a7365;
+  --bodytext2: #9a8f80;
+  --bodytext3: #e8e2d8;
+  --bodytext4: #f2ede6;
+
+  --accent1: #6d7458;
+  --accent2: #8c9a7b;
+
+  --button1-bg: #6d7458;
+  --button1-text: #ffffff;
+  --button1-hover: #5e664b;
+
+  --border-color: #bdbb9a;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Libre Baskerville', serif;
+}
+
+#Contact {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--bodytext2), var(--bg4));
+  font-family: var(--font-heading);
+  color: var(--bodytext4);
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.contact-heading {
+  font-size: 3.2rem;
+  font-weight: bold;
+  color: var(--bg2);
+  margin-bottom: 2rem;
+  letter-spacing: 0.03rem;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.contact-card {
+  background-color: var(--bg5);
+  border: 1px solid var(--bg2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  padding: 2rem 3rem;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 0.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent1);
+}
+
+.contact-card p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-family: var(--font-accent);
+  font-size: 1.4rem;
+  color: var(--bodytext1);
+  flex-wrap: wrap;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.contact-card p strong {
+  color: var(--headtext2);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.contact-card:hover p strong {
+  color: var(--bodytext1);
+}
+
+/* 🌐 Responsive Adjustments */
+@media (max-width: 768px) {
+  #Contact {
+    padding: 3rem 1.5rem;
+  }
+
+  .contact-heading {
+    font-size: 2.4rem;
+  }
+
+  .contact-container {
+    gap: 1.25rem;
+  }
+
+  .contact-card {
+    padding: 1.5rem 2rem;
+    width: 95%;
+  }
+
+  .contact-card p {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #Contact {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .contact-heading {
+    font-size: 2rem;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-card {
+    padding: 1.3rem 1rem;
+    width: 90%;
+  }
+
+  .contact-card p {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #Contact {
+    padding: 1rem 0.5rem;
+    font-size: 0.85rem;
+    gap: 1rem;
+  }
+
+  #Contact h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #Contact p {
+    font-size: 0.8rem;
+    margin: 0.3rem 0;
+  }
+
+  #Contact button.section-button {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.7rem;
+    margin: 0.3rem 0.2rem;
+    display: inline-block;
+  }
+
+  #Contact form {
+    display: inline;
+  }
+}
+
+@media (max-width: 360px) {
+  #Contact {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  #Contact h2 {
+    font-size: 1rem;
+  }
+
+  #Contact p {
+    font-size: 0.7rem;
+  }
+
+  #Contact button.section-button {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.6rem;
+    margin: 0.2rem 0.15rem;
+  }
+}
+

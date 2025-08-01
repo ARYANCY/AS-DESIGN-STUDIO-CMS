@@ -1,0 +1,148 @@
+<style>
+:root {
+  --bg1: #d9cfc4;
+  --bg2: #f4f0e7;
+  --bg3: #e7dfd5;
+  --bg4: #b4a997;
+  --bg5: #f8f5f1;
+  --headtext1: #4a463b;
+  --headtext2: #5b5142;
+  --headtext3: #8c9a7b;
+  --bodytext1: #7a7365;
+  --bodytext2: #9a8f80;
+  --bodytext3: #e8e2d8;
+  --bodytext4: #f2ede6;
+  --accent1: #6d7458;
+  --accent2: #8c9a7b;
+  --button1-bg: #6d7458;
+  --button1-text: #ffffff;
+  --button1-hover: #5e664b;
+  --border-color: #bdbb9a;
+  --box-shadow: rgba(26, 26, 18, 0.1);
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Libre Baskerville', serif;
+}
+#Blog {
+  max-width: 840px;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  font-family: var(--font-body);
+  background: var(--bg5);
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 20px var(--box-shadow);
+  text-align: center;
+}
+#Blog h2 {
+  font-family: 'Caveat', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--headtext2);
+  margin-bottom: 2.5rem;
+}
+#Blog article {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 14px var(--shadow-color, rgba(0, 0, 0, 0.08));
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+#Blog article:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px var(--shadow-hover);
+}
+#Blog img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+#Blog p {
+  color: var(--bodytext1);
+  font-size: 1.05rem;
+  margin: 0.5rem 0;
+}
+#Blog p strong {
+  display: block;
+  font-size: 1.6rem;
+  color: var(--headtext1);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+#Blog p small {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--bodytext2);
+  margin-top: 0.75rem;
+}
+#Blog form {
+  margin-top: 2.5rem;
+}
+#Blog button {
+  background: var(--button1-bg);
+  color: var(--button1-text);
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  font-weight: 500;
+}
+#Blog button:hover {
+  background: var(--button1-hover);
+}
+@media (max-width: 768px) {
+  #Blog {
+    padding: 2rem 1.5rem;
+  }
+  #Blog h2 {
+    font-size: 2.4rem;
+  }
+  #Blog p {
+    font-size: 1rem;
+  }
+  #Blog p strong {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 480px) {
+  #Blog h2 {
+    font-size: 2rem;
+  }
+  #Blog button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  #Blog img {
+    max-height: 200px;
+  }
+  #Blog p {
+    font-size: 0.95rem;
+  }
+  #Blog p strong {
+    font-size: 1.25rem;
+  }
+}
+</style>
+<section id="Blog">
+  <h2>Blog Posts</h2>
+  <% if (blogData) { %>
+    <article>
+      <img src="<%= blogData.image.url %>" alt="img"/>
+      <p><strong><%= blogData.title %></strong></p>
+      <p><%= blogData.content.substring(0, 100) %>...</p>
+      <p><small><%= new Date(blogData.date).toDateString() %></small></p>
+    </article>
+  <% } else { %>
+    <p>No blog posts available.</p>
+  <% } %>
+  <form action="/" method="get">
+    <button type="submit">HOME</button>
+  </form>
+</section>

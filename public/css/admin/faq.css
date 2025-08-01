@@ -1,0 +1,234 @@
+:root {
+  --bg1: #d9cfc4;
+  --bg2: #f4f0e7;
+  --bg3: #e7dfd5;
+  --bg4: #b4a997;
+  --bg5: #f8f5f1;
+
+  --headtext1: #4a463b;
+  --headtext2: #5b5142;
+  --headtext3: #8c9a7b;
+
+  --bodytext1: #7a7365;
+  --bodytext2: #9a8f80;
+  --bodytext3: #e8e2d8;
+  --bodytext4: #f2ede6;
+
+  --accent1: #6d7458;
+  --accent2: #8c9a7b;
+
+  --button1-bg: #6d7458;
+  --button1-text: #ffffff;
+  --button1-hover: #5e664b;
+
+  --border-color: #bdbb9a;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Libre Baskerville', serif;
+}
+
+#FAQ {
+  padding: 3rem 2rem;
+  background-color: var(--secondary-bg);
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+#FAQ h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-heading);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#FAQ div {
+  background-color: var(--accent-bg);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#FAQ p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+#FAQ form {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+#FAQ .section-button {
+  background-color: var(--btn-color);
+  color: white;
+  padding: 0.4rem 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  margin-top: 0.5rem;
+}
+
+#FAQ .section-button:hover {
+  background-color: var(--btn-hover);
+}
+
+#FAQ form:last-of-type {
+  margin-right: 0;
+}
+
+#FAQ > form {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+
+/* Animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  #FAQ {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .faq-heading {
+    font-size: 2.4rem;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+  }
+
+  .faq-toggle-icon {
+    font-size: 1.2rem;
+  }
+
+  .faq-answer {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #FAQ {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: var(--accent-bg);
+  }
+
+  #FAQ h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  #FAQ div {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--gray-border);
+    border-radius: 8px;
+    background-color: var(--section-bg);
+    box-shadow: 0 1px 3px var(--shadow-light);
+  }
+
+  #FAQ p {
+    margin: 0.5rem 0;
+    line-height: 1.4;
+    font-size: 0.85rem;
+    text-align: left;
+  }
+
+  #FAQ form {
+    display: inline-block;
+    margin: 0.25rem 0.25rem 0 0.25rem;
+  }
+
+  #FAQ button.section-button {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    box-shadow: none;
+  }
+
+  #FAQ form[action$="add"] {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  #FAQ form[action$="add"] button {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+
+  #FAQ div p::before {
+    content: "📌 ";
+    color: var(--feature-accent);
+  }
+
+  #FAQ div:last-of-type {
+    margin-bottom: 1rem;
+  }
+
+  #FAQ button:hover {
+    background-color: var(--btn-hover);
+    transition: background 0.3s ease;
+  }
+}
+@media (max-width: 360px) {
+  #FAQ {
+    padding: 0.5rem 0.5rem;
+  }
+
+  #FAQ h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  #FAQ p {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    word-wrap: break-word;
+  }
+
+  #FAQ button.section-button {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.5rem;
+    margin: 0.2rem 0.3rem;
+  }
+
+  #FAQ form {
+    display: inline-block;
+    margin-top: 0.3rem;
+  }
+
+  #FAQ > form:last-of-type {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.8rem;
+  }
+
+  #FAQ div {
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    background-color: var(--lighter-gray);
+  }
+}

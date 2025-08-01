@@ -1,0 +1,190 @@
+<% layout('admin-panel/layouts/admin-panel-boilerplate') %>
+
+<section id="Hero">
+  <% if (heroData && heroData.length > 0) { %>
+    <% heroData.forEach(h => { %>
+      <div class="hero-card">
+        <div class="hero-image-wrapper">
+          <img src="<%= h.image.url %>" alt="Hero Image" class="hero-image">
+        </div>
+        <div class="hero-text">
+          <p class="hero-business"><%= h.businessName %></p>
+          <p class="hero-tagline"><%= h.tagLine %></p>
+          <p class="hero-intro"><%= h.shortIntro %></p>
+
+          <form action="/admin/hero/edit/<%= h._id %>" method="get" class="hero-form">
+            <button type="submit" class="section-button">Edit</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p class="hero-no-data">No hero data available.</p>
+  <% } %>
+</section>
+
+<section id="About">
+  <h2>About</h2>
+  <% if (aboutData) { %>
+    <div>
+      <img src="<%= aboutData.image.url %>" alt="About Image" width="200">
+      <h3><%= aboutData.title %></h3>
+      <p><%= aboutData.description %></p>
+      <form action="/admin/about/edit/<%= aboutData._id %>" method="get" style="display:inline;">
+        <button type="submit" class="section-button">Edit</button>
+      </form>
+    </div>
+  <% } else { %>
+    <p>No about data available.</p>
+  <% } %>
+</section>
+
+<section id="Services">
+  <h2 class="section-heading">Services</h2>
+  <% if (serviceData && serviceData.length > 0) { %>
+    <% serviceData.forEach(s => { %>
+      <div class="service-image-container">
+            <img src="<%= s.serviceImage.url %>" alt="Service Image" class="service-image">
+      </div>
+      <div class="service-card">
+        <div class="service-content">
+          <div class="service-text">
+            <p class="service-title"><%= s.title %></p>
+            <p class="service-description"><%= s.description %></p>
+            <p class="service-price">Pricing: <%= s.pricing %></p>
+            <div class="service-buttons">
+              <form action="/admin/services/edit/<%= s._id %>" method="get">
+                <button type="submit" class="section-button">Edit</button>
+              </form>
+              <form action="/admin/services/<%= s._id %>?_method=DELETE" method="post">
+                <button type="submit" class="section-button">Delete</button>
+              </form>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p class="section-message">No services available.</p>
+  <% } %>
+
+  <form action="/admin/services/add" method="get" class="add-form">
+    <button type="submit" class="section-button add-button">+ Add</button>
+  </form>
+</section>
+
+<section id="Project">
+  <h2 class="section-title">Projects</h2>
+  <% if (projectData && projectData.length > 0) { %>
+    <% projectData.forEach(p => { %>
+      <div class="project-card">
+        <img src="<%= p.image.url %>" alt="Project Image" class="project-image">
+        <p class="project-description"><%= p.description %></p>
+        <div class="project-actions">
+          <form action="/admin/projects/edit/<%= p._id %>" method="get">
+            <button type="submit" class="section-button">Edit</button>
+          </form>
+          <form action="/admin/projects/<%= p._id %>?_method=DELETE" method="post">
+            <button type="submit" class="section-button">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p class="no-data-msg">No projects available.</p>
+  <% } %>
+  <form action="/admin/projects/add" method="get">
+    <button type="submit" class="section-button add-button">+ Add</button>
+  </form>
+</section>
+
+<section id="Testimonials">
+  <h2>Testimonials</h2>
+  <% if (testimonialData && testimonialData.length > 0) { %>
+    <% testimonialData.forEach(t => { %>
+      <div>
+        <p>"<%= t.review %>" - <%= t.name %> (Rating: <%= t.ratings %>/5)</p>
+        <form action="/admin/testimonials/edit/<%= t._id %>" method="get" style="display:inline;">
+          <button type="submit" class="section-button">Edit</button>
+        </form>
+        <form action="/admin/testimonials/<%= t._id %>?_method=DELETE" method="post" style="display:inline;">
+          <button type="submit" class="section-button">Delete</button>
+        </form>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No testimonials available.</p>
+  <% } %>
+  <form action="/admin/testimonials/add" method="get">
+    <button type="submit" class="section-button">+ Add</button>
+  </form>
+</section>
+
+<section id="Contact">
+  <h2>Contact Info</h2>
+  <% if (contactData && contactData.length > 0) { %>
+    <% contactData.forEach(c => { %>
+      <div>
+        <p><%= c.type %>: <%= c.value %></p>
+        <form action="/admin/contact/edit/<%= c._id %>" method="get" style="display:inline;">
+          <button type="submit" class="section-button">Edit</button>
+        </form>
+        <form action="/admin/contact/<%= c._id %>?_method=DELETE" method="post" style="display:inline;">
+          <button type="submit" class="section-button">Delete</button>
+        </form>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No contact data available.</p>
+  <% } %>
+  <form action="/admin/contact/add" method="get">
+    <button type="submit" class="section-button">+ Add</button>
+  </form>
+</section>
+
+<section id="Blog">
+  <h2>Blog Posts</h2>
+  <% if (blogData && blogData.length > 0) { %>
+    <% blogData.forEach(b => { %>
+      <div>
+        <p><strong><%= b.title %></strong></p>
+        <p><%= b.content.substring(0, 100) %>...</p>
+        <p><small><%= new Date(b.date).toDateString() %></small></p>
+        <form action="/admin/blog/edit/<%= b._id %>" method="get" style="display:inline;">
+          <button type="submit" class="section-button">Edit</button>
+        </form>
+        <form action="/admin/blog/<%= b._id %>?_method=DELETE" method="post" style="display:inline;">
+          <button type="submit" class="section-button">Delete</button>
+        </form>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No blog posts available.</p>
+  <% } %>
+  <form action="/admin/blog/add" method="get">
+    <button type="submit" class="section-button">+ Add</button>
+  </form>
+</section>
+
+<section id="FAQ">
+  <h2>FAQs</h2>
+  <% if (faqData && faqData.length > 0) { %>
+    <% faqData.forEach(f => { %>
+      <div>
+        <p>Q: <%= f.question %><br/>A: <%= f.answer %></p>
+        <form action="/admin/faq/edit/<%= f._id %>" method="get" style="display:inline;">
+          <button type="submit" class="section-button">Edit</button>
+        </form>
+        <form action="/admin/faq/<%= f._id %>?_method=DELETE" method="post" style="display:inline;">
+          <button type="submit" class="section-button">Delete</button>
+        </form>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No FAQs available.</p>
+  <% } %>
+  <form action="/admin/faq/add" method="get">
+    <button type="submit" class="section-button">+ Add</button>
+  </form>
+</section>

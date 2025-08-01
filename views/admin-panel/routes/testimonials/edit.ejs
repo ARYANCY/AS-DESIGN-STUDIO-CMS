@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/css/admin/form.css">
+<section id="edit-testimonial">
+  <h2>Edit Testimonial</h2>
+  <form action="/admin/testimonials/<%= testimonial._id %>?_method=PUT" method="POST">
+    <label for="name">Client Name:</label>
+    <input type="text" name="name" value="<%= testimonial.name %>" required />
+
+    <label for="ratings">Ratings (1–5):</label>
+    <input type="number" name="ratings" value="<%= testimonial.ratings %>" min="1" max="5" required />
+
+    <label for="review">Message:</label>
+    <textarea name="review" rows="4" required><%= testimonial.review %></textarea>
+
+    <button type="submit">Update Testimonial</button>
+  </form>
+</section>
+

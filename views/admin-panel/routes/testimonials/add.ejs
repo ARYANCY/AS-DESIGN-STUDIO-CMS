@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="/css/admin/form.css">
+<section id="add-testimonial">
+  <h2>Add Testimonial</h2>
+  <form action="/admin/testimonials" method="POST">
+    <label for="name">Client Name:</label>
+    <input type="text" name="name" required />
+
+    <label for="ratings">Ratings (1–5):</label>
+    <input type="number" name="ratings" min="1" max="5" required />
+
+    <label for="review">Message:</label>
+    <textarea name="review" rows="4" required></textarea>
+
+    <button type="submit">Add Testimonial</button>
+  </form>
+</section>

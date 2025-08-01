@@ -1,0 +1,266 @@
+:root {
+  --bg1: #d9cfc4;
+  --bg2: #f4f0e7;
+  --bg3: #e7dfd5;
+  --bg4: #b4a997;
+  --bg5: #f8f5f1;
+
+  --headtext1: #4a463b;
+  --headtext2: #5b5142;
+  --headtext3: #8c9a7b;
+
+  --bodytext1: #7a7365;
+  --bodytext2: #9a8f80;
+  --bodytext3: #e8e2d8;
+  --bodytext4: #f2ede6;
+
+  --accent1: #6d7458;
+  --accent2: #8c9a7b;
+
+  --button1-bg: #6d7458;
+  --button1-text: #ffffff;
+  --button1-hover: #5e664b;
+
+  --border-color: #bdbb9a;
+  --shadow-light: rgba(26, 26, 18, 0.1);
+  --box-shadow: 0 4px 8px var(--shadow-light);
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Libre Baskerville', serif;
+}
+
+#Blog {
+  background: var(--bg2);
+  padding: 6rem 2rem;
+  font-family: var(--font-body);
+  text-align: center;
+  color: var(--bodytext1);
+  border-top: 3px solid var(--accent2);
+}
+
+#Blog h2 {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--headtext1);
+  margin-bottom: 4rem;
+  letter-spacing: 0.05rem;
+  position: relative;
+}
+
+#Blog h2::before,
+#Blog h2::after {
+  content: '✦';
+  color: var(--accent1);
+  margin: 0 0.5rem;
+}
+
+#Blog > div {
+  background: var(--bg5);
+  margin: 2rem auto;
+  padding: 2.5rem;
+  max-width: 800px;
+  border-radius: 1.2rem;
+  border-left: 5px solid var(--accent2);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  backdrop-filter: blur(2px);
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+#Blog > div:nth-child(even) {
+  background: var(--bg3);
+}
+
+#Blog > div:hover {
+  transform: translateY(-6px);
+  border-left-color: var(--accent1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+#Blog strong {
+  display: block;
+  font-family: var(--font-accent);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--headtext2);
+  transition: color 0.3s ease;
+}
+
+#Blog > div:hover strong {
+  color: var(--accent1);
+}
+
+#Blog strong::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin-top: 0.5rem;
+  background-color: var(--accent2);
+}
+
+#Blog p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0.5rem 0;
+  color: var(--bodytext2);
+}
+
+#Blog p:first-of-type {
+  font-weight: 500;
+}
+
+#Blog p small {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--accent1);
+}
+
+#Blog p:last-of-type {
+  margin-bottom: 0;
+}
+
+#Blog form {
+  margin-top: 1.5rem;
+}
+.section-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--btn-color);
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 0;
+  font-family: var(--font-body, 'Poppins', sans-serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--shadow-color);
+  transition: all 0.25s ease-in-out;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.section-button:hover {
+  background-color: var(--btn-hover);
+  border-color: var(--btn-color);
+  box-shadow: 0 7px 10px var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.section-button:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+
+#Blog button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(141, 154, 123, 0.3);
+}
+
+#Blog form button {
+  box-shadow: var(--box-shadow);
+}
+
+@media (max-width: 760px) {
+  #Blog {
+    padding: 4rem 1.5rem;
+  }
+
+  #Blog h2 {
+    font-size: 2rem;
+  }
+
+  #Blog > div {
+    padding: 1.8rem;
+    gap: 0.8rem;
+  }
+
+  #Blog button {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  section {
+    padding: 1rem 0.5rem;
+    gap: 1rem;
+    max-width: 100%;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  p, label, input, textarea {
+    font-size: 0.8rem;
+  }
+
+  button, .section-button {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.7rem;
+    margin: 0.3rem 0.2rem;
+    box-shadow: none;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 140px;
+    object-fit: cover;
+  }
+
+  form {
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  ul, ol {
+    padding-left: 1rem;
+  }
+
+  .container, .content-wrapper {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  section {
+    padding: 0.6rem 0.4rem;
+    gap: 0.6rem;
+  }
+
+  h1, h2, h3 {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  p, label, input, textarea {
+    font-size: 0.7rem;
+  }
+
+  button, .section-button {
+    font-size: 0.65rem;
+    padding: 0.35rem 0.6rem;
+    margin: 0.25rem 0.15rem;
+  }
+
+  img {
+    max-height: 120px;
+  }
+
+  form {
+    gap: 0.5rem;
+  }
+
+  .container, .content-wrapper {
+    padding: 0.6rem;
+  }
+}

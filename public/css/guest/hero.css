@@ -1,0 +1,146 @@
+:root {
+  --bg1: #d9cfc4;
+  --bg2: #f4f0e7;
+  --bg3: #e7dfd5;
+  --bg4: #b4a997;
+  --bg5: #f8f5f1;
+  --headtext1: #4a463b;
+  --headtext2: #5b5142;
+  --headtext3: #8c9a7b;
+  --bodytext1: #7a7365;
+  --bodytext2: #9a8f80;
+  --bodytext3: #e8e2d8;
+  --bodytext4: #f2ede6;
+  --accent1: #6d7458;
+  --accent2: #8c9a7b;
+  --button1-bg: #6d7458;
+  --button1-text: #ffffff;
+  --button1-hover: #5e664b;
+  --border-color: #bdbb9a;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Libre Baskerville', serif;
+}
+#Hero {
+  background: var(--bg2);
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-body);
+  color: var(--bodytext1);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-card {
+  background-color: var(--bg5);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding: 3rem;
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.hero-card:hover {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.hero-image {
+  top: 0;
+  width: 27rem;
+  height: auto;
+  object-fit: cover;
+  box-shadow: none;
+  border: 1px solid var(--border-color);
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.business-name {
+  font-size: 2.8rem;
+  font-family: var(--font-heading);
+  color: var(--headtext1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: var(--accent2);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.intro {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 600px;
+  color: var(--bodytext1);
+}
+@media (max-width: 768px) {
+  .Hero{
+    width: 100%;;
+  }
+  .hero-card {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .business-name {
+    font-size: 2.2rem;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+  }
+
+  .intro {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .Hero {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .hero-card {
+    padding: 1.5rem;
+  }
+
+  .business-name {
+    font-size: 1.8rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .intro {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,186 @@
+:root {
+  --bg1: #d9cfc4;
+  --bg2: #f4f0e7;
+  --bg3: #e7dfd5;
+  --bg4: #b4a997;
+  --bg5: #f8f5f1;
+  --headtext1: #4a463b;
+  --headtext2: #5b5142;
+  --headtext3: #8c9a7b;
+  --bodytext1: #7a7365;
+  --bodytext2: #9a8f80;
+  --bodytext3: #e8e2d8;
+  --bodytext4: #f2ede6;
+  --accent1: #6d7458;
+  --accent2: #8c9a7b;
+  --button1-bg: #6d7458;
+  --button1-text: #ffffff;
+  --button1-hover: #5e664b;
+  --border-color: #bdbb9a;
+  --box-shadow: rgba(26, 26, 18, 0.1);
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Libre Baskerville', serif;
+}
+#Testimonials {
+  padding: 4rem 3rem;
+  background: var(--bg5);
+  color: var(--accent2);
+  max-width: 100%;
+  margin: 3rem auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: var(--font-heading);
+  user-select: none;
+}
+
+.Testimonials-header {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--accent1);
+  margin-bottom: 2rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.Testimonials-container {
+  background: var(--accent1);
+  padding: 1.5rem 2rem;
+  border: 2px solid var(--bg3);
+  box-shadow: 0 6px 18px rgba(122, 115, 101, 0.2);
+  cursor: default;
+  text-align: left;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  color: var(--bodytext4);
+}
+
+.Testimonials-container:hover {
+  box-shadow: 0 14px 28px rgba(122, 115, 101, 0.25);
+  border-color: var(--accent2);
+  transform: scale(1.02);
+  color: var(--bg1);
+  font-style: normal;
+}
+
+#Testimonials form {
+  display: inline-block;
+  margin: 0 0.3rem;
+}
+
+#Testimonials > form {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+.section-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--btn-color);
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 0;
+  font-family: var(--font-body, 'Poppins', sans-serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--shadow-color);
+  transition: all 0.25s ease-in-out;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.section-button:hover {
+  background-color: var(--btn-hover);
+  border-color: var(--btn-color);
+  box-shadow: 0 7px 10px var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.section-button:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 760px) {
+  #Testimonials {
+    padding: 3rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .Testimonials-header {
+    font-size: 2.45rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .Testimonials-container {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 1.2rem 1.5rem;
+  }
+
+  #Testimonials > form button {
+    font-size: 1.1rem;
+    padding: 0.6rem 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #Testimonials {
+    padding: 1rem 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  #Testimonials h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.7rem;
+  }
+
+  #Testimonials div {
+    margin: 0.8rem 0;
+  }
+
+  #Testimonials p {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+
+  #Testimonials button.section-button {
+    font-size: 0.95rem;
+    padding: 0.45rem 0.9rem;
+    margin: 0.2rem 0.15rem;
+  }
+}
+
+@media (max-width: 360px) {
+  #Testimonials {
+    padding: 0.6rem 0.3rem;
+    font-size: 0.85rem;
+  }
+
+  #Testimonials h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #Testimonials p {
+    font-size: 0.85rem;
+  }
+
+  #Testimonials button.section-button {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+    margin: 0.15rem;
+  }
+}

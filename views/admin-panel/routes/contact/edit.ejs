@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/css/admin/form.css">
+<section id="edit-contact">
+  <h2>Edit Contact</h2>
+  <form action="/admin/contact/<%= contact._id %>?_method=PUT" method="POST">
+    <label>Type:</label>
+    <input type="text" name="type" value="<%= contact.type %>" required />
+
+    <label>Value:</label>
+    <input type="text" name="value" value="<%= contact.value %>" required />
+
+    <button type="submit">Update Contact</button>
+ </form>
+
+</section>
