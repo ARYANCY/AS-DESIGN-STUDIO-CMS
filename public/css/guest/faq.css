@@ -17,7 +17,7 @@
   --button1-text: #ffffff;
   --button1-hover: #5e664b;
   --border-color: #bdbb9a;
-  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Poppins', sans-serif;
   --font-accent: 'Libre Baskerville', serif;
@@ -26,28 +26,30 @@
 #FAQ {
   max-width: 100%;
   margin: 30px auto;
-  padding: 32px 24px;
+  padding: 40px 32px;
   font-family: var(--font-heading);
   color: var(--headtext1);
   background-color: var(--bg5);
-  border-radius: 12px;
   box-shadow: var(--box-shadow);
-  animation: fadeInUp 0.6s ease;
-}
-
-.faq-item {
-  border-bottom: 1px solid var(--border-color);
-  padding: 16px 0;
-  transition: background 0.3s ease;
-}
-
-.faq-item:last-child {
-  border-bottom: none;
+  animation: fadeSlideIn 1s ease-out both;
 }
 
 .faq-heading {
   font-size: 3.5rem;
   text-align: center;
+  margin-bottom: 24px;
+  animation: slideDown 0.8s ease-out;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px 0;
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
 }
 
 .faq-header {
@@ -56,60 +58,76 @@
   align-items: center;
   cursor: pointer;
   gap: 10px;
-  transition: background 0.25s ease;
   user-select: none;
-}
-
-.faq-header:focus-within,
-.faq-header:hover {
-  background-color: rgba(141, 154, 123, 0.1);
-  border-radius: 8px;
+  transform: translateY(10px);
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
 }
 
 .faq-question {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
-  flex: 1;
   color: var(--headtext2);
   transition: color 0.3s ease;
 }
 
 .faq-toggle-icon {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: var(--accent1);
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+              color 0.3s ease;
 }
 
 .faq-answer {
   max-height: 0;
-  overflow: hidden;
   opacity: 0;
-  padding-left: 4px;
-  padding-top: 0;
+  transform: translateY(-10px);
   font-size: 1rem;
-  line-height: 1.6;
   color: var(--bodytext1);
-  transition: max-height 0.5s ease, opacity 0.5s ease, padding-top 0.3s ease;
+  line-height: 1.7;
+  transition:
+    max-height 0.6s ease,
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .faq-item.open .faq-answer {
   max-height: 500px;
   opacity: 1;
-  padding-top: 10px;
+  transform: translateY(0);
+  padding-top: 12px;
 }
 
 .faq-item.open .faq-toggle-icon {
-  transform: rotate(45deg);
+  transform: rotate(45deg) scale(1.2);
   color: var(--accent2);
 }
 
-@keyframes fadeInUp {
-  0% {
+@keyframes fadeSlideIn {
+  from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
-  100% {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -117,8 +135,7 @@
 
 @media screen and (max-width: 760px) {
   #FAQ {
-    padding: 24px 16px;
-    width: 100%;
+    padding: 32px 20px;
   }
   .faq-heading {
     font-size: 2.4rem;
@@ -127,7 +144,7 @@
     font-size: 1rem;
   }
   .faq-toggle-icon {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   .faq-answer {
     font-size: 0.95rem;
@@ -135,12 +152,8 @@
 }
 
 @media screen and (max-width: 480px) {
-  section {
-    padding: 3rem 4rem;
-    width: 90%;
-  }
   #FAQ {
-    width: 100%;
+    padding: 24px 16px;
   }
   .faq-heading {
     font-size: 2rem;
@@ -150,22 +163,15 @@
   }
   .faq-toggle-icon {
     font-size: 1rem;
-    margin-left: 6px;
   }
   .faq-answer {
     font-size: 0.9rem;
-    padding-left: 2px;
   }
 }
 
 @media screen and (max-width: 360px) {
-  section {
-    padding: 3rem 4rem;
-    width: 90%;
-  }
   #FAQ {
-    padding: 18px 10px;
-    width: 100vw;
+    padding: 18px 12px;
   }
   .faq-heading {
     font-size: 1.7rem;
@@ -178,6 +184,5 @@
   }
   .faq-answer {
     font-size: 0.85rem;
-    padding-left: 2px;
   }
 }

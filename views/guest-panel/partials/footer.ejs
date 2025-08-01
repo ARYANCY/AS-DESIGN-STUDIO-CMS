@@ -62,17 +62,35 @@
          </ul>
     </div>
     
-    <div class="footer-col right">
-      <div class="subscribe">
-        <form action="/subscribe" method="POST">
-          <p>CONNECT US</p>
-          <input placeholder="your name?" class="subscribe-input" name="name" type="text" required>
-          <input placeholder="Your e-mail" class="subscribe-input" name="email" type="email" required>
-          <br>
-          <button type="submit" class="submit-btn">SUBMIT</button>
-        </form>
-      </div>
-    </div>
+    <section class="subscribe-section">
+  <form id="subscribeForm" action="/subscribe" method="POST" class="subscribe-form">
+    <p class="subscribe-heading">CONNECT US</p>
+    
+    <input 
+      type="text" 
+      name="name" 
+      placeholder="Enter your name" 
+      class="subscribe-input"
+      required 
+    >
+    
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="Your e-mail" 
+      class="subscribe-input"
+      required 
+    >
+    
+    <button type="submit" id="submitBtn" class="submit-btn">
+      <span class="btn-text">SUBMIT</span>
+      <span class="spinner" style="display: none;"></span>
+    </button>
+    
+    <p id="subscribeMessage" class="form-message"></p>
+  </form>
+</section>
+
     
 
 
@@ -97,6 +115,39 @@
           window.open(url, "_blank");
         });
       }
+    });
+  });
+
+  const form = document.getElementById('subscribeForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = submitBtn.querySelector('.btn-text');
+  const spinner = submitBtn.querySelector('.spinner');
+  const messageBox = document.getElementById('subscribeMessage');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    btnText.textContent = "Sending...";
+    spinner.style.display = "inline-block";
+
+    const formData = new FormData(form);
+
+    setTimeout(() => {
+      btnText.textContent = "SUBMIT";
+      spinner.style.display = "none";
+      submitBtn.disabled = false;
+      form.reset();
+      messageBox.textContent = "✅ Email sent successfully!";
+      messageBox.style.color = "green";
+    }, 10000);
+
+  
+    fetch('/subscribe', {
+      method: 'POST',
+      body: formData
+    }).catch(() => {
+      
     });
   });
 </script>

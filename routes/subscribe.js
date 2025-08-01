@@ -27,7 +27,6 @@ router.post('/subscribe', async (req, res) => {
   };
   try {
     await transporter.sendMail(mailOptions);
-    res.redirect('/home');
   } catch (err) {
     console.error('Error sending email:', err);
     const statusCode = err.statusCode || 500;

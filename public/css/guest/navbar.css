@@ -21,6 +21,7 @@
   box-shadow: var(--shadow);
   font-family: var(--font-heading);
   transition: all 0.3s ease;
+  animation: navbarSlideIn 0.6s ease forwards;
 }
 
 .navbar .container {
@@ -60,15 +61,28 @@
   color: var(--text-dark);
   text-decoration: none;
   padding: 0.5rem 0.7rem;
-  border-radius: 6px;
   transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar .nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--text-accent);
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-links li a:hover::after {
+  width: 100%;
 }
 
 .navbar .nav-links li a:hover,
 .navbar .nav-links li a:focus {
-  background: var(--text-accent);
-  color: var(--text-hover);
-  box-shadow: 0 4px 10px rgba(109, 116, 88, 0.3);
+  color: var(--text-accent);
 }
 
 .hamburger {
@@ -79,39 +93,54 @@
   background: transparent;
   cursor: pointer;
   padding: 0.5rem;
+  transition: transform 0.3s ease;
 }
 
 .hamburger span {
   width: 26px;
   height: 2px;
   background-color: var(--text-dark);
-  transition: 0.3s;
+  transition: 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
   }
+
   .navbar .container {
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
   }
+
   .navbar .nav-links {
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     gap: 1rem;
     margin-top: 1rem;
     display: none;
     animation: slideDown 0.3s ease;
   }
+
   .navbar .nav-links.show {
     display: flex;
   }
+
   .navbar .nav-links li a {
-    width: 90%;
+    width: 100%;
     padding: 0.8rem 0.5rem;
-    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
   }
 }
 
@@ -119,9 +148,11 @@
   .navbar .logo {
     font-size: 1.5rem;
   }
+
   .hamburger span {
     width: 22px;
   }
+
   .navbar .nav-links li a {
     font-size: 0.95rem;
     padding: 0.7rem 0.4rem;
@@ -132,9 +163,11 @@
   .navbar .logo {
     font-size: 1.3rem;
   }
+
   .hamburger span {
     width: 18px;
   }
+
   .navbar .nav-links li a {
     font-size: 0.85rem;
     padding: 0.6rem 0.3rem;
@@ -145,6 +178,17 @@
   from {
     opacity: 0;
     transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes navbarSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;

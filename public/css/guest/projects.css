@@ -22,6 +22,7 @@
   --font-body: 'Poppins', sans-serif;
   --font-accent: 'Libre Baskerville', serif;
 }
+
 #Project {
   text-align: center;
   padding: 5rem 2rem;
@@ -46,10 +47,10 @@
 }
 
 .project-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  justify-content: center;
 }
 
 .project-card {
@@ -57,7 +58,7 @@
   background-color: #efe3d5;
   border-radius: 15rem 15rem 0 0;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,13 +99,14 @@
   text-decoration: underline;
   font-weight: bold;
 }
+
 @media (max-width: 760px) {
-  .Project{
-     width: 100%;
+  .Project {
+    width: 100%;
   }
+
   #Project {
     padding: 3.5rem 1.5rem;
-
   }
 
   .project-heading {
@@ -123,12 +125,12 @@
 }
 
 @media (max-width: 480px) {
-  .Project{
-     width: 100%;
+  .Project {
+    width: 100%;
   }
+
   #Project {
     padding: 2.5rem 1rem;
-
   }
 
   .project-heading {

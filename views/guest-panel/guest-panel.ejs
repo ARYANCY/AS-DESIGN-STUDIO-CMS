@@ -21,9 +21,9 @@
   <h2>About</h2>
   <% if (aboutData) { %>
     <div>
-      <img src="<%= aboutData.image.url %>" alt="About Image" width="200">
-      <h3><%= aboutData.title %></h3>
-      <p><%= aboutData.description %></p>
+      <img id="about-img" src="<%= aboutData.image.url %>" alt="About Image" width="200">
+      <h3 id="about-title"><%= aboutData.title %></h3>
+      <p id="about-desc"><%= aboutData.description %></p>
     </div>
   <% } else { %>
     <p>No about data available.</p>
@@ -45,7 +45,7 @@
             <h3 class="service-title"><%= s.title %></h3>
             <p class="service-desc"><%= s.description %></p>
             <p class="service-price">Pricing: <%= s.pricing %></p>
-            <a href="/services/<%= s.id %>" class="read">Read More</a>
+            <a href="/services/<%= s.id %>" class="read" style="background-color: rgb(177, 169, 159);">Read More</a>
           </div>
         </div>
       <% }) %>
@@ -151,5 +151,39 @@
         item.classList.toggle("open");
       });
     });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = `${entry.target.dataset.delay}s`;
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.faq-header').forEach((el, i) => {
+      el.dataset.delay = i * 0.1;
+      observer.observe(el);
+    });
   });
+
+  const cards = document.querySelectorAll('.service-card');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach(card => {
+    observer.observe(card);
+  });
+
+  
 </script>
+

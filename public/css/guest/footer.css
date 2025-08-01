@@ -22,6 +22,12 @@
   --font-body: 'Poppins', sans-serif;
   --font-accent: 'Libre Baskerville', serif;
 }
+
+.form-message {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
 .footer {
     background-color: var(--bodytext1);
     padding: 2rem 5rem 2rem;
@@ -211,76 +217,100 @@ a {
   background: #e4405f;
   color: #fff;
 }
-.bottom-text {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 1.5rem;
-    color: var(--bodytext2);
-}
-.subscribe {
-  position: relative;
-  left: 7rem;
-  width: 300px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 22px;
-  color: #333;
-  box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
+
+form#subscribeForm {
+  background-color: var(--bg3);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 2rem auto;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
   font-family: var(--font-body);
+  color: var(--bodytext1);
 }
 
-.subscribe p {
+form#subscribeForm p:first-child {
+  font-size: 1.6rem;
+  font-family: var(--font-heading);
+  color: var(--headtext1);
   text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 3px;
   margin-bottom: 1.5rem;
+  letter-spacing: 1px;
 }
 
 .subscribe-input {
   display: block;
   width: 100%;
-  margin-bottom: 1.2rem;
-  padding: 10px;
-  border: none;
-  border-bottom: 1px solid #ccc;
-  background: transparent;
+  padding: 0.9rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--bodytext4);
+  color: var(--bodytext1);
   font-size: 1rem;
-  transition: border-color 0.25s ease;
-}
-
-.subscribe-input:focus {
-  border-color: var(--bodytext1);
+  font-family: var(--font-body);
   outline: none;
 }
 
-.subscribe .submit-btn {
-  display: inline-block;
-  padding: 12px 25px;
+.subscribe-input:focus {
+  border-color: var(--accent1);
+  background-color: var(--bg5);
+}
+
+#submitBtn {
+  width: 100%;
+  padding: 0.9rem 1rem;
   background-color: var(--button1-bg);
   color: var(--button1-text);
-  font-size: 0.9rem;
-  font-weight: bold;
-  letter-spacing: 3px;
-  border: none;
-  border-radius: 30px;
+  font-family: var(--font-body);
+  font-size: 1rem;
   cursor: pointer;
-  box-shadow: -5px 6px 20px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
 
-.subscribe .submit-btn:hover {
+#submitBtn:hover {
   background-color: var(--button1-hover);
-  box-shadow: -5px 6px 20px rgba(80, 80, 80, 0.5);
 }
+
+.btn-text {
+  margin-right: 0.5rem;
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--button1-text);
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.form-message {
+  text-align: center;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  color: var(--accent1);
+}
+
 
 @media (max-width: 760px) {
-  .footer{
+  .footer {
     width: 100%;
   }
+
   .footer .container {
     display: flex;
-    flex-direction: row; /* Keep it row */
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
@@ -288,6 +318,7 @@ a {
     padding: 2rem 1rem;
     gap: 2rem;
   }
+
   a {
     color: var(--bg2);
     text-decoration: none;
@@ -309,26 +340,29 @@ a {
     width: 100%;
   }
 
-  .subscribe {
-    position: static;
-    margin-top: 1.5rem;
+  .subscribe-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .subscribe-form {
     width: 80%;
     padding: 20px;
-    box-shadow: none;
     background: #fff;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .subscribe p {
+  .subscribe-form .subscribe-heading {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 1rem;
     letter-spacing: 2px;
   }
 
-  .subscribe input {
+  .subscribe-form .subscribe-input {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -339,23 +373,22 @@ a {
     outline: none;
   }
 
-  .subscribe .submit-btn {
+  .subscribe-form .submit-btn {
     all: unset;
-    width:80%;
+    width: 80%;
     padding: 0.7rem 1rem;
     font-size: 0.9rem;
     font-weight: bold;
     text-align: center;
     color: var(--button1-text);
     background-color: var(--button1-bg);
-    border-radius: 30px;
     margin-top: 1rem;
     cursor: pointer;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     transition: background-color 0.3s ease;
   }
 
-  .subscribe .submit-btn:hover {
+  .subscribe-form .submit-btn:hover {
     background-color: var(--button1-hover);
   }
 }
@@ -375,11 +408,12 @@ a {
     font-size: 16px;
   }
 
-  .footer{
+  .footer {
     width: 100%;
   }
+
   .footer .container {
-    flex-direction: row; /* Keep horizontal layout */
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
@@ -396,26 +430,30 @@ a {
     align-items: center;
   }
 
-    .subscribe {
-        width: 92%;
-        padding: 18px;
-        align-items: flex-start;
-    }
+  .subscribe-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 
+  .subscribe-form {
+    width: 92%;
+    padding: 18px;
+    align-items: flex-start;
+  }
 
-  .subscribe p {
+  .subscribe-form .subscribe-heading {
     font-size: 18px;
     letter-spacing: 1.5px;
   }
 
-  .subscribe input {
+  .subscribe-form .subscribe-input {
     width: 100%;
     margin-bottom: 12px;
   }
 
-  .subscribe .submit-btn {
+  .subscribe-form .submit-btn {
     margin-top: 2rem;
     width: 80%;
-    border-radius: 30px;
   }
 }
