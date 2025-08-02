@@ -1,135 +1,130 @@
 :root {
-  --bg1: #d9cfc4;
-  --bg2: #f4f0e7;
-  --bg3: #e7dfd5;
-  --bg4: #b4a997;
-  --bg5: #f8f5f1;
-  --headtext1: #4a463b;
-  --headtext2: #5b5142;
-  --headtext3: #8c9a7b;
-  --bodytext1: #7a7365;
-  --bodytext2: #9a8f80;
-  --bodytext3: #e8e2d8;
-  --bodytext4: #f2ede6;
-  --accent1: #6d7458;
-  --accent2: #8c9a7b;
-  --button1-bg: #6d7458;
-  --button1-text: #ffffff;
-  --button1-hover: #5e664b;
-  --border-color: #bdbb9a;
-  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Poppins', sans-serif;
-  --font-accent: 'Libre Baskerville', serif;
+  --bg-color:  #d3c9bd;
+  --text-color: #000000;
+  --accent-color: #b49c8e;
+  --accent-hover: #9c8579;
+  --font-primary: 'Playfair Display', serif;
+  --font-secondary: 'Open Sans', sans-serif;
+  --max-width: 1200px;
+  --section-padding: 4rem;
 }
-#Hero {
-  background: var(--bg2);
-  padding: 5rem 2rem;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-secondary);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.hero-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: var(--font-body);
-  color: var(--bodytext1);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  padding: var(--section-padding) 2rem;
 }
 
 .hero-card {
-  background-color: var(--bg5);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  padding: 3rem;
-  max-width: 1100px;
+  max-width: var(--max-width);
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 3rem;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  border: 1px solid var(--border-color);
-}
-
-.hero-card:hover {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .hero-image {
-  top: 0;
-  width: 27rem;
-  height: auto;
+  flex: 1 1 50%;
+  width: 100%;
+  height: 100%;
+  max-height: 600px;
   object-fit: cover;
-  box-shadow: none;
-  border: 1px solid var(--border-color);
 }
 
-.hero-content {
-  flex: 1;
+.hero-text-content {
+  flex: 1 1 45%;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .business-name {
-  font-size: 2.8rem;
-  font-family: var(--font-heading);
-  color: var(--headtext1);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-family: var(--font-primary);
+  font-size: 3.2rem;
+  font-weight: bold;
+  line-height: 1.3;
 }
 
 .tagline {
-  font-size: 1.2rem;
-  color: var(--accent2);
-  font-weight: 500;
-  text-transform: capitalize;
+    font-family: var(--font-primary);
+    font-size: 1.7rem;
+    color: var(--accent-color);
+    margin-top: -1.75rem;
+}
+.intro {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
 }
 
-.intro {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  max-width: 600px;
-  color: var(--bodytext1);
+.hero-button {
+  display: inline-block;
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  text-transform: uppercase;
+  color: white;
+  background-color: var(--accent-color);
+  text-decoration: none;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
 }
+
+.hero-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  bottom: 0;
+  left: -100%;
+  transition: left 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: var(--accent-hover);
+}
+
+.hero-button:hover::after {
+  left: 0;
+}
+
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (max-width: 768px) {
-  .Hero{
-    width: 100%;;
-  }
   .hero-card {
     flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
   }
 
-  .hero-image {
-    width: 100%;
-    max-width: 100%;
-    border: none;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  .business-name {
-    font-size: 2.2rem;
-  }
-
-  .tagline {
-    font-size: 1.1rem;
-  }
-
-  .intro {
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .Hero {
-    padding: 1rem;
-    width: 100%;
-  }
-
-  .hero-card {
-    padding: 1.5rem;
+  .hero-image,
+  .hero-text-content {
+    flex: 1 1 100%;
   }
 
   .business-name {
@@ -137,10 +132,6 @@
   }
 
   .tagline {
-    font-size: 1rem;
-  }
-
-  .intro {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 }

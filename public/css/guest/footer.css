@@ -394,12 +394,14 @@ form#subscribeForm p:first-child {
 }
 
 @media (max-width: 480px) {
-  .wrapper {
-    flex-wrap: wrap;
-    height: auto;
-    padding-top: 30px;
-    padding-left: 1px;
-  }
+    .wrapper {
+        position: relative;
+        right: -1rem;
+        flex-wrap: wrap;
+        height: auto;
+        padding-top: 30px;
+        padding-left: 1px;
+    }
 
   .wrapper .icon {
     margin: 8px;
@@ -435,7 +437,19 @@ form#subscribeForm p:first-child {
     display: flex;
     justify-content: center;
   }
-
+  form#subscribeForm {
+    background-color: var(--bg3);
+    padding: 3rem;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    left: -43px;
+    margin: -1rem -2rem;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    font-family: var(--font-body);
+    color: var(--bodytext1);
+}
   .subscribe-form {
     width: 92%;
     padding: 18px;
@@ -447,10 +461,13 @@ form#subscribeForm p:first-child {
     letter-spacing: 1.5px;
   }
 
-  .subscribe-form .subscribe-input {
-    width: 100%;
-    margin-bottom: 12px;
-  }
+    .subscribe-form .subscribe-input {
+        position: relative;
+        right: 1px;
+        width: 15rem;
+        margin-left: 1rem;
+        margin-bottom: 13px;
+    }
 
   .subscribe-form .submit-btn {
     margin-top: 2rem;

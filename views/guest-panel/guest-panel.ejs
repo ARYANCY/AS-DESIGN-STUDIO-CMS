@@ -1,21 +1,28 @@
 <% layout('guest-panel/layouts/guest-panel-boilerplate') %>
-
-<section id="Hero" class="Hero">
+<section id="Hero" class="hero-section">
   <% if (heroData && heroData.length > 0) { %>
     <% heroData.forEach(h => { %>
-      <div class="hero-card">
-        
-          <img class="hero-image" src="<%= h.image.url%>"/>
-          <p class="business-name"><strong><%= h.businessName %></strong> </p>
-          <p class="tagline"><strong><%= h.tagLine %></strong> </p>
-          <p class="intro"><strong><%= h.shortIntro %></strong> </p>
-    
+      <div class="hero-card scroll-fade">
+        <img class="hero-image" src="<%= h.image.url %>" alt="Hero Image" />
+
+        <div class="hero-text-content scroll-fade">
+          <p class="business-name"><strong><%= h.businessName %></strong></p>
+          <p class="tagline"><%= h.tagLine %></p>
+          <p class="intro"><%= h.shortIntro %></p>
+
+          <a href="https://www.instagram.com/_as_design_studio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="hero-button">
+            View Our Work →
+          </a>
+        </div>
       </div>
     <% }) %>
   <% } else { %>
-    <p>No hero data available.</p>
+    <p class="no-hero-message scroll-fade">No hero data available.</p>
   <% } %>
 </section>
+
+
+
 
 <section id="About" class="About"> 
   <h2>About</h2>
@@ -36,7 +43,7 @@
 
   <% if (serviceData && serviceData.length > 0) { %>
     <div class="services-grid">
-      <% serviceData.slice(0, 3).forEach(s => { %>
+      <% serviceData.slice(0, 4).forEach(s => { %>
         <div class="service-card">
           <div class="image-wrapper">
             <img src="<%= s.serviceImage.url %>" alt="Service Image">
@@ -169,21 +176,29 @@
     });
   });
 
-  const cards = document.querySelectorAll('.service-card');
+   const scrollElements = document.querySelectorAll('.scroll-fade');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-        observer.unobserve(entry.target);
+  function elementInView(el, offset = 100) {
+    const elementTop = el.getBoundingClientRect().top;
+    return (
+      elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset
+    );
+  }
+
+  function displayScrollElement(el) {
+    el.classList.add('show');
+  }
+
+  function handleScrollAnimation() {
+    scrollElements.forEach((el) => {
+      if (elementInView(el)) {
+        displayScrollElement(el);
       }
     });
-  }, { threshold: 0.15 });
+  }
 
-  cards.forEach(card => {
-    observer.observe(card);
-  });
-
+  window.addEventListener('scroll', handleScrollAnimation);
+  window.addEventListener('load', handleScrollAnimation);
   
 </script>
 

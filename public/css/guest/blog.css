@@ -217,10 +217,11 @@
     font-size: 1.8rem;
   }
 
-  #Blog > div {
-    padding: 1.5rem;
-    border-radius: 1rem;
-  }
+    #Blog > div {
+        position: relative;
+        right: 2rem;
+        padding: 1.5rem;
+    }
 
   #Blog p strong {
     font-size: 1.4rem;

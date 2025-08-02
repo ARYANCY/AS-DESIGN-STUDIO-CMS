@@ -26,7 +26,7 @@
 #Project {
   text-align: center;
   padding: 5rem 2rem;
-  background-color: var(--bg2);
+  background-color: var(--bodytext1);
   font-family: 'Playfair Display', serif;
 }
 
@@ -47,11 +47,12 @@
 }
 
 .project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 2rem;
 }
+
 
 .project-card {
   width: 300px;
@@ -99,7 +100,9 @@
   text-decoration: underline;
   font-weight: bold;
 }
-
+.project-card:hover .image-wrapper img {
+  transform: scale(1.1);
+}
 @media (max-width: 760px) {
   .Project {
     width: 100%;
