@@ -22,6 +22,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: var(--section-padding) 2rem;
+  background: url('/images/hero.jpeg');
 }
 
 .hero-card {
@@ -60,8 +61,8 @@ body {
 
 .tagline {
     font-family: var(--font-primary);
-    font-size: 1.7rem;
-    color: var(--accent-color);
+    font-size: 1.9rem;
+    color:whitesmoke;
     margin-top: -1.75rem;
 }
 .intro {
@@ -80,7 +81,7 @@ body {
   font-family: var(--font-secondary);
   text-transform: uppercase;
   color: white;
-  background-color: var(--accent-color);
+  background-color: black;
   text-decoration: none;
   overflow: hidden;
   transition: background-color 0.3s ease;
@@ -99,7 +100,7 @@ body {
 }
 
 .hero-button:hover {
-  background-color: var(--accent-hover);
+  background-color: lemonchiffon;
 }
 
 .hero-button:hover::after {

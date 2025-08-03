@@ -24,7 +24,7 @@
   --transition: all 0.3s ease;
 }
 #About {
-  background:var(--bodytext1);
+  background:url('/images/about.jpeg');
   padding: 5rem 15rem;
   display: flex;
   flex-direction: column;

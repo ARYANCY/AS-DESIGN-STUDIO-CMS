@@ -24,7 +24,7 @@
 }
 #Testimonials {
   padding: 4rem 3rem;
-  background:var(--bg5);
+  background:url('/images/imgbg.jpg');
   color: var(--accent2);
   max-width: 100%;
   margin: 3rem auto;

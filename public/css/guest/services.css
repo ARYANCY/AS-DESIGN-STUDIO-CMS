@@ -8,7 +8,7 @@
 }
 
 .services-section {
-  background-color: var(--bg-dark);
+  background: url('/images/services.jpeg');
   color: var(--text-light);
   padding: 4rem 2rem;
   font-family: var(--font-primary);
@@ -17,13 +17,14 @@
 .section-tag {
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--accent);
+    color: var(--text-light);
     font-size: 0.9rem;
     text-align: center;
     margin-bottom: 0.5rem;
 }
 
 .services-heading {
+    color: #fff;
     font-size: 2.5rem;
     font-weight: 600;
     margin-bottom: 3rem;
